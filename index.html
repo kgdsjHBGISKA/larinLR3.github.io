@@ -88,6 +88,9 @@
         </p>
 
         <div class="controls">
+            <label><input type="checkbox" id="relocation" class="skill-check"> Готов к переездам</label>
+            <input type="text" id="hobby-input" placeholder="Твое хобби (например, кулинария)">
+            <button id="submit-btn" class="btn" style="background-color: #ffc107; color: black;" onclick="hireMe()">Меня возьмут!</button>
             <input type="text" id="newSurname" placeholder="Новая фамилия...">
             <button onclick="changeSurname()">Сменить фамилию</button>
             <button style="background: #28a745;" onclick="randomBg()">Случайный фон</button>
@@ -95,6 +98,39 @@
     </div>
 
     <script>
+        function validateAge() {
+        let isConfirmed = false;
+        while (!isConfirmed) {
+        let input = prompt("Введите ваш возраст:", "35");
+
+        if (input === null) return;
+
+        let ageValue = parseInt(input);
+
+        if (isNaN(ageValue) || ageValue < 0) {
+        alert("Ошибка! Имя — только текст, возраст — неотрицательные целые числа.");
+        continue;
+        }
+
+        isConfirmed = confirm("Вы уверены, что вам " + ageValue + "?");
+        }
+        }
+
+        validateAge();
+
+        function hireMe() {
+        const allInputs = document.querySelectorAll('input');
+        const submitBtn = document.getElementById('submit-btn');
+
+        allInputs.forEach(input => {
+        input.disabled = true;
+        });
+
+        submitBtn.style.display = 'none';
+
+        alert("Анкета принята! Все поля заблокированы.");
+        }
+
         function changeSurname() {
         const input = document.getElementById('newSurname');
         const surnameSpan = document.getElementById('surname');
