@@ -1,0 +1,23 @@
+<script>
+    // --- Задание 1: Функция максимума ---
+    function max(a, b) {
+    return (a > b) ? a : b;
+    }
+    console.log("Максимум:", max(10, 5));
+
+    // --- Задание 2: Переменные ---
+    let name = "Михаил";
+    let admin = name;
+    alert("Имя из admin: " + admin); // Тот самый алерт [cite: 313]
+
+    // --- Задание 3: Проверка возраста ---
+    // Мы используем confirm и prompt, тут квадратные скобки не нужны [cite: 298, 300]
+    let age;
+    let isConfirmed = false;
+
+    while (!isConfirmed) {
+    age = prompt("Сколько тебе лет?", "35");
+    if (age === null) break; // Если нажал "Отмена"
+    isConfirmed = confirm("Вы уверены, что вам " + age + "?");
+    }
+</script>
