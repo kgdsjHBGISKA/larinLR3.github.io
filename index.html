@@ -1,23 +1,112 @@
-<script>
-    // --- Задание 1: Функция максимума ---
-    function max(a, b) {
-    return (a > b) ? a : b;
-    }
-    console.log("Максимум:", max(10, 5));
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>Резюме — Михаил Ларин</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s ease; /* Плавная смена фона */
+        }
 
-    // --- Задание 2: Переменные ---
-    let name = "Михаил";
-    let admin = name;
-    alert("Имя из admin: " + admin); // Тот самый алерт [cite: 313]
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); /* Тени  */
+            border: 1px solid #ddd; /* Рамки  */
+            text-align: center;
+            max-width: 400px;
+            transition: transform 0.3s ease; /* Для ховера  */
+        }
 
-    // --- Задание 3: Проверка возраста ---
-    // Мы используем confirm и prompt, тут квадратные скобки не нужны [cite: 298, 300]
-    let age;
-    let isConfirmed = false;
+            .card:hover {
+                transform: translateY(-10px);
+                border-color: #007bff; /* Смена цвета рамки при наведении  */
+            }
 
-    while (!isConfirmed) {
-    age = prompt("Сколько тебе лет?", "35");
-    if (age === null) break; // Если нажал "Отмена"
-    isConfirmed = confirm("Вы уверены, что вам " + age + "?");
-    }
-</script>
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Круглое фото  */
+            object-fit: cover;
+            border: 4px solid #007bff;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #222;
+        }
+        /* Размеры шрифта и цвет [cite: 355, 357] */
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .controls {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+            button:hover {
+                background: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="https://via.placeholder.com/150" alt="Михаил Ларин">
+        <h1>Михаил <span id="surname">Ларин</span></h1>
+        <p>
+            Инженер по промышленной автоматизации (3 курс).<br>
+            Стек: C#, .NET, ПЛК, SQL. Увлекаюсь MTB и бас-гитарой.
+        </p>
+
+        <div class="controls">
+            <input type="text" id="newSurname" placeholder="Новая фамилия...">
+            <button onclick="changeSurname()">Сменить фамилию</button>
+            <button style="background: #28a745;" onclick="randomBg()">Случайный фон</button>
+        </div>
+    </div>
+
+    <script>
+        function changeSurname() {
+        const input = document.getElementById('newSurname');
+        const surnameSpan = document.getElementById('surname');
+        if (input.value.trim() !== "") {
+        surnameSpan.textContent = input.value;
+        }
+        }
+
+        function randomBg() {
+        const colors = ['#ff9a9e', '#fad0c4', '#a1c4fd', '#c2e9fb', '#d4fc79'];
+        document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
